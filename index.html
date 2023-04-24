@@ -18,22 +18,26 @@
         <p>More filters</p>
     </div>
 
-    <div id="additionalFilters">
+    <div id="filters-container">
         <form id="moreFilters">
-            <label for="states">States:</label>
-            <select id="states" multiple>
+            <label class="formLabel" for="states">States:</label>
+            <select class="formData" id="states" multiple>
                 <option value="WA">WA</option>
                 <option value="OR">OR</option>
             </select>
-            <label for="costRange">Entrance fees:</label>
-            <input type="range" min="0" max="100" value="50" id="costRange">
+            <label class="formLabel" for="costRange">Entrance fees:</label>
+            <input class="formData" type="range" min="0" max="100" value="50" id="costRange">
 
-            <label for="guidedTours">Guided Tours</label>
-            <input type="checkbox" id="guidedTours">
-            <label for="hiking">Hiking</label>
-            <input type="checkbox" id="hiking">
+            <label for="allCheckboxes" class="formLabel">Available activities:</label>
+            <div id="allCheckboxes" class="formData">
+                <label for="guidedTours">Guided Tours</label>
+                <input type="checkbox" id="guidedTours">
+                <label for="hiking">Hiking</label>
+                <input type="checkbox" id="hiking">
 
-            <input type="submit" value="Filter"> 
+            </div>
+            
+            <input class="formLabel" type="submit" value="Filter"> 
         </form>
     </div>
 

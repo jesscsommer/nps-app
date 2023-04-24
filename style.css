@@ -52,3 +52,26 @@ img {
     height: 25%;
     overflow: hidden;
 }
+
+#filters-container {
+    padding: 15px;
+    outline: solid 5px #11AB68;
+    overflow: hidden;
+}
+
+.formData {
+    float: left;
+    width: 75%;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.formLabel {
+    float: left;
+    width: 25%;
+    margin-top: 15px;
+}
+
+#costRange {
+    max-width: 70%;
+}
