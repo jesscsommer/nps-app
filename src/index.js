@@ -26,14 +26,15 @@ function createCard(obj) {
     card.className = "card";
     // create image variable
     const image = document.createElement('img');
+    image.src = obj.images[0].url;
     // create parkName variable
     const parkName = document.createElement('p');
-    image.src = obj.images[0].url;
+    parkName.textContent = obj.fullName;
     // attach image to card
     card.append(image);
     parkGallery.append(card);
     // attach Park name to card
-    
+    card.append(parkName);
     // clicking park name shows details
         // who entrance fee info
     // attach park location
