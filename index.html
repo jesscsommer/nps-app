@@ -15,10 +15,26 @@
     
     <div id="search-container">
         <input type="text" id="userInputField" placeholder="Enter Park Name Here!">
+        <p>More filters</p>
     </div>
 
     <div id="additionalFilters">
+        <form id="moreFilters">
+            <label for="states">States:</label>
+            <select id="states" multiple>
+                <option value="WA">WA</option>
+                <option value="OR">OR</option>
+            </select>
+            <label for="costRange">Entrance fees:</label>
+            <input type="range" min="0" max="100" value="50" id="costRange">
 
+            <label for="guidedTours">Guided Tours</label>
+            <input type="checkbox" id="guidedTours">
+            <label for="hiking">Hiking</label>
+            <input type="checkbox" id="hiking">
+
+            <input type="submit" value="Filter"> 
+        </form>
     </div>
 
     <div id="mainPark">
