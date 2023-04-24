@@ -23,6 +23,7 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 function createCard(obj) {
     // create card variable
     const card = document.createElement('div');
+    card.className = "card";
     // create image variable
     const image = document.createElement('img');
     // create parkName variable

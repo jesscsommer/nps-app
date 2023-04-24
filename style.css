@@ -16,12 +16,33 @@ li {
     font-family: 'Helvetica';
 }
 
+/* #parkGallery {
+    display: grid;
+
+} */
+
 img {
+    justify-self: center;
+    width: auto;
+    height: 12rem;
+}
+
+.card {
+    display: inline-grid;
+    width: 15rem;
+    height: 25rem;
+    padding: 1rem;
+    border: solid black;
+    text-align: center;
+    overflow: hidden;
+
+}
+
+#parkImg {
    float: left;
    width: 33%;
    margin: 3em;
 }
-
 
 #mainPark {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
