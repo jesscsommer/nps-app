@@ -15,3 +15,15 @@ p {
 li {
     font-family: 'Helvetica';
 }
+
+img {
+   float: left;
+   width: 33%;
+   margin: 3em;
+}
+
+#mainPark {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 2px 16px;
+    border-radius: 1.75%;
+}
