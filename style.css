@@ -59,6 +59,10 @@ img {
     overflow: hidden;
 }
 
+.hidden {
+    display: none;
+}
+
 .formData {
     float: left;
     width: 75%;

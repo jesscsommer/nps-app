@@ -69,6 +69,12 @@ const displayPark = (parkObj) => {
     parkAddress.innerText = `${parkObj.addresses[0].line1} \n ${parkObj.addresses[0].line2} \n ${parkObj.addresses[0].city}, ${parkObj.addresses[0].stateCode} ${parkObj.addresses[0].postalCode}`
 }
 
+//! Add event listeners 
+
+showFilters.addEventListener('click', e => {
+    moreFilters.classList.toggle('hidden');
+})
+
 //! Fetch data
 
 const getParks = (parkCode, path) => {
