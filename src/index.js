@@ -27,10 +27,17 @@ function createCard(obj) {
     // create image variable
     const image = document.createElement('img');
     // create parkName variable
+
+    // add temporary name and state to Div in order to test filter
     const parkName = document.createElement('p');
+    parkName.innerText = obj.fullName
+
+    const state = document.createElement('p')
+    state.innerText = obj.addresses[0].stateCode
+
     image.src = obj.images[0].url;
     // attach image to card
-    card.append(image);
+    card.append(image, parkName, state);
     parkGallery.append(card);
     // attach Park name to card
     
@@ -85,6 +92,8 @@ const getParks = (parkCode, path) => {
 }
 
 getParks('olym', 'parks').then(parkObj => displayPark(parkObj.data[0]))
+
+
 
 //! Initial fetch
 // fetch(`${baseURL}/parks?api_key=${API_KEY}`)
