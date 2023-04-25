@@ -39,9 +39,12 @@ function createCard(obj) {
     const state = document.createElement('p')
     state.innerText = obj.states
 
+    const fee = document.createElement('p')
+    fee.innerText = obj.entranceFees[0].cost
+
     image.src = obj.images[0].url;
     // attach image to card
-    card.append(image, parkName, state);
+    card.append(image, parkName, state, fee);
     parkGallery.append(card);
 
     // attach Park name to card
@@ -103,7 +106,7 @@ const displayPark = (parkObj) => {
     parkImg.alt = parkObj.fullName
     parkTitle.innerText = parkObj.fullName
     parkDescription.innerText = parkObj.description
-    // parkObj.activities.forEach(activity => renderLineItem(activity.name, activityList))
+    parkObj.activities.forEach(activity => renderLineItem(activity.name, activityList))
     parkHours.innerText = parkObj.operatingHours[0].description
     parkAddress.innerText = `${parkObj.addresses[0].line1} \n ${parkObj.addresses[0].line2} \n ${parkObj.addresses[0].city}, ${parkObj.addresses[0].stateCode} ${parkObj.addresses[0].postalCode}`
 }
@@ -118,14 +121,27 @@ showFilters.addEventListener('click', e => {
 moreFilters.addEventListener('submit', e => {
     e.preventDefault();
     const selectedItems = document.querySelectorAll('#states :checked')
-        const selectedValues = [...selectedItems].map(item => item.value)
-        console.log(selectedValues)
-    
-        getParks().then(parks => {
-            const results = parks.data.filter(park => selectedValues.includes(park.states))
-            parkGallery.innerHTML = ""
-            results.forEach(createCard)
-        })
+    const selectedValues = [...selectedItems].map(item => item.value)
+    const maxPrice = parseInt(costRange.value);
+
+    const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox')).filter(box => box.checked === true)
+    const checkedValues = []
+    checkedBoxes.forEach(box => checkedValues.push(box.id))
+    console.log(checkedValues)
+
+    getParks().then(parks => {
+        const results1 = parks.data.filter(park => selectedValues.includes(park.states))
+        const results2 = results1.filter(result => (result.entranceFees[0].cost < maxPrice))
+        console.log(results2)
+        parkGallery.innerHTML = ""
+        results2.forEach(createCard)
+    })
+})
+
+// park obj --> activities, which is an array of objects --> objects have the name key for activity, first letter is uppercase
+
+costRange.addEventListener('change', e => {
+    maxValue.innerText = `$${e.target.value}`;
 })
 
 

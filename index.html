@@ -30,33 +30,52 @@
                 <option value="OR">OR</option>
             </select>
             <label class="formLabel" for="costRange">Entrance fees:</label>
-            <input class="formData" type="range" min="0" max="100" value="50" id="costRange">
-
+            <div id="slider" class="formData">
+                <p id="minValue">$0</p>
+                <input type="range" min="0" max="100" value="50" id="costRange">
+                <p id="maxValue">$50</p>
+            </div>
+            
             <label for="allCheckboxes" class="formLabel">Available activities:</label>
             <div id="allCheckboxes" class="formData">
+                <input type="checkbox" id="biking">
+                <label for="biking">Biking</label>
+                <input type="checkbox" id="birdwatching">
+                <label for="birdwatching">Birdwatching</label>
+                <input type="checkbox" id="camping">
+                <label for="camping">Camping</label>
+                <input type="checkbox" id="climbing">
+                <label for="climbing">Climbing</label>
+                <input type="checkbox" id="fishing">
+                <label for="fishing">Fishing</label>
                 <input type="checkbox" id="guidedTours">
                 <label for="guidedTours">Guided Tours</label><br>
                 <input type="checkbox" id="hiking">
                 <label for="hiking">Hiking</label>
-                
-
+                <input type="checkbox" id="museum">
+                <label for="museum">Museum Exhibits</label>
+                <input type="checkbox" id="skiing">
+                <label for="skiing">Skiing</label>
+                <input type="checkbox" id="surfing">
+                <label for="surfing">Surfing</label>
+                <input type="checkbox" id="swimming">
+                <label for="swimming">Swimming</label>
             </div>
             
             <input class="formLabel" type="submit" value="Filter" id="submitBtn"> 
         </form>
     </div>
 
-    <button id="testBtn">Test Filter Logic</button>
-
     <div id="mainPark">
         <img id="parkImg">
         <h2 id="parkTitle">Park title</h2>
         <p id="parkDescription">Park description</p>
-        <!-- <h3>Activities</h3>
-        <ul id="activityList"></ul> -->
         <h3>Location</h3>
         <p id="parkAddress">Address</p>
         <p id="parkHours">Hours</p>
+        <h3>Activities</h3>
+        <ul id="activityList"></ul>
+       
     </div>
 
     <div id="parkGallery">
