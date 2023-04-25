@@ -97,3 +97,7 @@ p#maxValue {
     flex-direction: row;
     align-items: center;
 }
+
+div#allCheckboxes label {
+    margin-right: 15px;
+}
