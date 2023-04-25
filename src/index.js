@@ -9,6 +9,7 @@ const userInput = document.querySelector("#userInput");
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 .then(res => res.json())
 .then(parks => {
+    console.log
     console.log(parks.data[0]);
     parks.data.forEach(park => {
         createCard(park);
