@@ -9,12 +9,9 @@ const userInput = document.querySelector("#userInput");
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 .then(res => res.json())
 .then(parks => {
-    console.log
-    console.log(parks.data[0]);
     parks.data.forEach(park => {
         createCard(park);
     })
-    // createCards(parks.data);
 })
 
 //! functions
@@ -36,6 +33,8 @@ function createCard(obj) {
     const moreInfo = document.createElement('div');
     
     // create parkName variable
+
+    // add temporary name and state to Div in order to test filter
     const parkName = document.createElement('p');
     parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
 
@@ -43,8 +42,14 @@ function createCard(obj) {
     const likeBtn = document.createElement('button');
     likeBtn.className = 'like button';
 
+    parkName.innerText = obj.fullName
+
+    const state = document.createElement('p')
+    state.innerText = obj.states
+
+    image.src = obj.images[0].url;
     // attach image to card
-    card.append(image);
+    card.append(image, parkName, state);
     parkGallery.append(card);
 
     // attach Park name to card
@@ -91,21 +96,38 @@ const displayPark = (parkObj) => {
     parkAddress.innerText = `${parkObj.addresses[0].line1} \n ${parkObj.addresses[0].line2} \n ${parkObj.addresses[0].city}, ${parkObj.addresses[0].stateCode} ${parkObj.addresses[0].postalCode}`
 }
 
+//! Add event listeners 
+
+showFilters.addEventListener('click', e => {
+    moreFilters.classList.toggle('hidden');
+})
+
+moreFilters.addEventListener('submit', e => {
+    e.preventDefault();
+    const selectedItems = document.querySelectorAll('#states :checked')
+        const selectedValues = [...selectedItems].map(item => item.value)
+        console.log(selectedValues)
+    
+        getParks().then(parks => {
+            const results = parks.data.filter(park => selectedValues.includes(park.states))
+            parkGallery.innerHTML = ""
+            results.forEach(createCard)
+        })
+})
+
 //! Fetch data
 
-const getParks = (parkCode, path) => {
+const getParks = (parkCode) => {
     if (parkCode) {
-        return fetch(`${baseURL}/${path}?parkCode=${parkCode}&api_key=${API_KEY}`)
+        return fetch(`${baseURL}/parks?parkCode=${parkCode}&api_key=${API_KEY}`)
+        .then(res => res.json())
+    } else {
+        return fetch(`${baseURL}/parks?limit=475&api_key=${API_KEY}`)
         .then(res => res.json())
     }
 }
 
-getParks('olym', 'parks').then(parkObj => displayPark(parkObj.data[0]))
+getParks('olym').then(parkObj => displayPark(parkObj.data[0]))
 
-//! Initial fetch
-// fetch(`${baseURL}/parks?api_key=${API_KEY}`)
-// .then(res => res.json())
-// .then(parks => console.log(parks))
-
-// const card = document.createElement('div');
+//! Filters
 

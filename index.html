@@ -15,12 +15,35 @@
     </header>
     <!-- we are using a 'change' event -->
     <div id="search-container">
-        <input type="text" id="userInput" placeholder="Enter Park Name Here!">
+        <input type="text" id="userInputField" placeholder="Enter Park Name Here!">
+        <p id="showFilters">More filters</p>
     </div>
 
-    <div id="additionalFilters">
+    <div id="filters-container">
+        <form id="moreFilters">
+            <label class="formLabel" for="states">States:</label>
+            <select class="formData" id="states" multiple>
+                <option value="WA">WA</option>
+                <option value="OR">OR</option>
+            </select>
+            <label class="formLabel" for="costRange">Entrance fees:</label>
+            <input class="formData" type="range" min="0" max="100" value="50" id="costRange">
 
+            <label for="allCheckboxes" class="formLabel">Available activities:</label>
+            <div id="allCheckboxes" class="formData">
+                <input type="checkbox" id="guidedTours">
+                <label for="guidedTours">Guided Tours</label><br>
+                <input type="checkbox" id="hiking">
+                <label for="hiking">Hiking</label>
+                
+
+            </div>
+            
+            <input class="formLabel" type="submit" value="Filter" id="submitBtn"> 
+        </form>
     </div>
+
+    <button id="testBtn">Test Filter Logic</button>
 
     <div id="mainPark">
         <img id="parkImg">
