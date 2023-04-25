@@ -24,21 +24,39 @@ function createCard(obj) {
     // create card variable
     const card = document.createElement('div');
     card.className = "card";
+
     // create image variable
     const image = document.createElement('img');
     image.src = obj.images[0].url;
+
+    // create 'more info' variable
+    const moreInfo = document.createElement('div');
+    
     // create parkName variable
     const parkName = document.createElement('p');
-    parkName.textContent = obj.fullName;
+    parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
+
+    // create like button
+    const likeBtn = document.createElement('button');
+    likeBtn.className = 'like button';
+
     // attach image to card
     card.append(image);
     parkGallery.append(card);
+
     // attach Park name to card
     card.append(parkName);
-    // clicking park name shows details
-        // who entrance fee info
-    // attach park location
+
+    // create location and entrance paragraph elements
+    const location = document.createElement('p');
+    const entranceFee = document.createElement('p');
+    location.innerText = `Location: ${obj.addresses[0].line1}, ${obj.addresses[0].city}, ${obj.addresses[0].stateCode}, ${obj.addresses[0].postalCode}`;
+    entranceFee.innerText = `Entrance fee: ${obj.entranceFees[0].cost}`;
+    // add description & append
+    card.append(location, entranceFee);
     // attach like button
+    card.append(likeBtn);
+    
 }
 
 
