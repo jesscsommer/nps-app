@@ -31,7 +31,6 @@ function createCard(obj) {
     const image = document.createElement('img');
     image.src = obj.images[0].url;
     image.alt = obj.fullName;
-    image.title = obj.fullName;
 
     // create 'more info' variable
     const moreInfo = document.createElement('div');
