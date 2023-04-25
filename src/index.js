@@ -86,13 +86,21 @@ moreFilters.addEventListener('submit', e => {
     const selectedValues = [...selectedItems].map(item => item.value)
     const maxPrice = parseInt(costRange.value);
 
+    const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox')).filter(box => box.checked === true)
+    const checkedValues = []
+    checkedBoxes.forEach(box => checkedValues.push(box.id))
+    console.log(checkedValues)
+
     getParks().then(parks => {
         const results1 = parks.data.filter(park => selectedValues.includes(park.states))
         const results2 = results1.filter(result => (result.entranceFees[0].cost < maxPrice))
+        console.log(results2)
         parkGallery.innerHTML = ""
         results2.forEach(createCard)
     })
 })
+
+// park obj --> activities, which is an array of objects --> objects have the name key for activity, first letter is uppercase
 
 costRange.addEventListener('change', e => {
     maxValue.innerText = `$${e.target.value}`;
