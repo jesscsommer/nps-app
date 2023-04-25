@@ -18,10 +18,11 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 // card create function
 function createCard(obj) {
     // add a count variable for each card's like button
-    const count = 0;
-    // create and add a <p> to hold like button
+    let count = 0;
+
+    // create and add a <p> to hold like glyph
     const likeContainer = document.createElement('p');
-    likeContainer.innerHTML = `<span class="heartGlyph">&#x2764;&#xfe0f;</span> ${count} like(s)!`
+    likeContainer.innerHTML = `<span class="heartGlyph">&#x2661;</span> ${count} likes!`
 
     // create card variable
     const card = document.createElement('div');
@@ -39,10 +40,6 @@ function createCard(obj) {
     // add temporary name and state to Div in order to test filter
     const parkName = document.createElement('p');
     parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
-
-    // create like button
-    const likeBtn = document.createElement('button');
-    likeBtn.className = 'like button';
 
     parkName.innerText = obj.fullName
 
@@ -65,7 +62,7 @@ function createCard(obj) {
     entranceFee.innerText = `Entrance fee: 
     ${obj.entranceFees[0].cost}`;
     
-    // attach add button
+    // attach like button
     card.append(likeContainer);
     
 }
@@ -75,6 +72,8 @@ function createCard(obj) {
 //     e.preventDefault();
 //     // e.target.value.textContent
 // })
+
+
 
 
 
@@ -114,6 +113,7 @@ moreFilters.addEventListener('submit', e => {
             results.forEach(createCard)
         })
 })
+
 
 //! Fetch data
 
