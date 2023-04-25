@@ -5,16 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wander</title>
-    <script type="module" src="src/index.js" defer></script>
+    <script src="config.js" defer></script>
+    <script src="src/index.js" defer></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <h1 id="title">Wander</h1>
     </header>
-    
+    <!-- we are using a 'change' event -->
     <div id="search-container">
-        <input type="text" id="userInputField" placeholder="Enter Park Name Here!">
+        <input type="text" id="userInput" placeholder="Enter Park Name Here!">
     </div>
 
     <div id="additionalFilters">
@@ -30,8 +31,6 @@
         <h3>Location</h3>
         <p id="parkAddress">Address</p>
         <p id="parkHours">Hours</p>
-
-
     </div>
 
     <div id="parkGallery">

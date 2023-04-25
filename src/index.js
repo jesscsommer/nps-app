@@ -1,11 +1,9 @@
-//! Get API key
-
-import {API_KEY} from "/config.js"
-
 //! Globals
 const baseURL = 'https://developer.nps.gov/api/v1'
 
-const userInput = document.querySelector("#userInputField");
+const searchContainer = document.querySelector("#searchContainer");
+
+const userInput = document.querySelector("#userInput");
 
 //! Initial fetch
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
@@ -21,6 +19,9 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 //! functions
 // card create function
 function createCard(obj) {
+    // add a count variable for each card's like button
+    const count = 0;
+
     // create card variable
     const card = document.createElement('div');
     card.className = "card";
@@ -28,6 +29,8 @@ function createCard(obj) {
     // create image variable
     const image = document.createElement('img');
     image.src = obj.images[0].url;
+    image.alt = obj.fullName;
+    image.title = obj.fullName;
 
     // create 'more info' variable
     const moreInfo = document.createElement('div');
@@ -50,24 +53,24 @@ function createCard(obj) {
     // create location and entrance paragraph elements
     const location = document.createElement('p');
     const entranceFee = document.createElement('p');
-    location.innerText = `Location: ${obj.addresses[0].line1}, ${obj.addresses[0].city}, ${obj.addresses[0].stateCode}, ${obj.addresses[0].postalCode}`;
-    entranceFee.innerText = `Entrance fee: ${obj.entranceFees[0].cost}`;
+    location.innerText = `Location: 
+    ${obj.addresses[0].line1}, ${obj.addresses[0].city}, ${obj.addresses[0].stateCode}, ${obj.addresses[0].postalCode}`;
+    entranceFee.innerText = `Entrance fee: 
+    ${obj.entranceFees[0].cost}`;
+    
     // add description & append
     card.append(location, entranceFee);
     // attach like button
-    card.append(likeBtn);
+    // card.append(likeBtn);
     
 }
 
+// attach change event to userInput
+// userInput.addEventListener("change", (e) => {
+//     e.preventDefault();
+//     // e.target.value.textContent
+// })
 
-
-
-// add input event to userInput
-/*
-userInput.addEventListener("change", (e) => {
-    e
-})
-*/
 
 
 //! Render on page 
