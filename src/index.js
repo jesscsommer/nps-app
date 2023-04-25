@@ -90,6 +90,11 @@ submitBtn.addEventListener('submit', e => {
     const selectedValues = [...selectedItems].map(item => item.value)
     console.log(selectedValues)
 
+    getParks().then(parks => {
+       parks.data.filter(park => selectedValues.includes(park.stateCode))
+       .forEach(park => createCard(park)) // one of the parks in the selectedValues)
+    })
+
 })
 
 
