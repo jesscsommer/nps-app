@@ -1,6 +1,3 @@
-//! Get API key
-
-import {API_KEY} from "/config.js"
 
 //! Globals
 const baseURL = 'https://developer.nps.gov/api/v1'
@@ -90,13 +87,26 @@ submitBtn.addEventListener('submit', e => {
     const selectedValues = [...selectedItems].map(item => item.value)
     console.log(selectedValues)
 
-    getParks().then(parks => {
-       parks.data.filter(park => selectedValues.includes(park.stateCode))
-       .forEach(park => createCard(park)) // one of the parks in the selectedValues)
-    })
+    // getParks().then(parks => {
+    //    parks.data.filter(park => selectedValues.includes(park.stateCode))
+    //    .forEach(park => createCard(park)) // one of the parks in the selectedValues)
+    // })
 
 })
 
+// testBtn.addEventListener('click', e => {
+//     const selectedItems = document.querySelectorAll('#states :checked')
+//     const selectedValues = [...selectedItems].map(item => item.value)
+//     console.log(selectedValues)
+
+//     // parkGallery.innerHTML = ""
+
+//     // getParks().then(parks => {
+//     //     console.log(parks.data.filter(park => (park.stateCode === 'WA')))
+//     //    parks.data.filter(park => selectedValues.includes(park.stateCode))
+//     //    .forEach(park => createCard(park)) // one of the parks in the selectedValues)
+//     })
+// })
 
 //! Fetch data
 
