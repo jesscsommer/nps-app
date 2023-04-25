@@ -27,8 +27,12 @@
                 <option value="OR">OR</option>
             </select>
             <label class="formLabel" for="costRange">Entrance fees:</label>
-            <input class="formData" type="range" min="0" max="100" value="50" id="costRange">
-
+            <div id="slider" class="formData">
+                <p id="minValue">$0</p>
+                <input type="range" min="0" max="100" value="50" id="costRange">
+                <p id="maxValue">$50</p>
+            </div>
+            
             <label for="allCheckboxes" class="formLabel">Available activities:</label>
             <div id="allCheckboxes" class="formData">
                 <input type="checkbox" id="guidedTours">
@@ -43,17 +47,16 @@
         </form>
     </div>
 
-    <button id="testBtn">Test Filter Logic</button>
-
     <div id="mainPark">
         <img id="parkImg">
         <h2 id="parkTitle">Park title</h2>
         <p id="parkDescription">Park description</p>
-        <!-- <h3>Activities</h3>
-        <ul id="activityList"></ul> -->
         <h3>Location</h3>
         <p id="parkAddress">Address</p>
         <p id="parkHours">Hours</p>
+        <h3>Activities</h3>
+        <ul id="activityList"></ul>
+       
 
 
     </div>

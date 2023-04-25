@@ -76,6 +76,24 @@ img {
     margin-top: 15px;
 }
 
-#costRange {
+/* #costRange {
     max-width: 70%;
+} */
+
+ul {
+    columns: 4;
+}
+
+p#minValue {
+   margin-right: 5px;
+}
+
+p#maxValue {
+    margin-left: 5px;
+}
+
+#slider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }

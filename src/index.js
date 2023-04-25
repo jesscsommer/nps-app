@@ -66,7 +66,7 @@ const displayPark = (parkObj) => {
     parkImg.alt = parkObj.fullName
     parkTitle.innerText = parkObj.fullName
     parkDescription.innerText = parkObj.description
-    // parkObj.activities.forEach(activity => renderLineItem(activity.name, activityList))
+    parkObj.activities.forEach(activity => renderLineItem(activity.name, activityList))
     parkHours.innerText = parkObj.operatingHours[0].description
     parkAddress.innerText = `${parkObj.addresses[0].line1} \n ${parkObj.addresses[0].line2} \n ${parkObj.addresses[0].city}, ${parkObj.addresses[0].stateCode} ${parkObj.addresses[0].postalCode}`
 }
@@ -88,6 +88,10 @@ moreFilters.addEventListener('submit', e => {
             parkGallery.innerHTML = ""
             results.forEach(createCard)
         })
+})
+
+costRange.addEventListener('change', e => {
+    maxValue.innerText = `$${e.target.value}`;
 })
 
 //! Fetch data
