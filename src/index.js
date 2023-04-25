@@ -30,9 +30,12 @@ function createCard(obj) {
     const state = document.createElement('p')
     state.innerText = obj.states
 
+    const fee = document.createElement('p')
+    fee.innerText = obj.entranceFees[0].cost
+
     image.src = obj.images[0].url;
     // attach image to card
-    card.append(image, parkName, state);
+    card.append(image, parkName, state, fee);
     parkGallery.append(card);
     // attach Park name to card
     
@@ -80,14 +83,15 @@ showFilters.addEventListener('click', e => {
 moreFilters.addEventListener('submit', e => {
     e.preventDefault();
     const selectedItems = document.querySelectorAll('#states :checked')
-        const selectedValues = [...selectedItems].map(item => item.value)
-        console.log(selectedValues)
-    
-        getParks().then(parks => {
-            const results = parks.data.filter(park => selectedValues.includes(park.states))
-            parkGallery.innerHTML = ""
-            results.forEach(createCard)
-        })
+    const selectedValues = [...selectedItems].map(item => item.value)
+    const maxPrice = parseInt(costRange.value);
+
+    getParks().then(parks => {
+        const results1 = parks.data.filter(park => selectedValues.includes(park.states))
+        const results2 = results1.filter(result => (result.entranceFees[0].cost < maxPrice))
+        parkGallery.innerHTML = ""
+        results2.forEach(createCard)
+    })
 })
 
 costRange.addEventListener('change', e => {
