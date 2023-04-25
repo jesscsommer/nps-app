@@ -94,6 +94,7 @@ moreFilters.addEventListener('submit', e => {
     getParks().then(parks => {
         const results1 = parks.data.filter(park => selectedValues.includes(park.states))
         const results2 = results1.filter(result => (result.entranceFees[0].cost < maxPrice))
+        // const results3 = results2.filter(result => checkedBoxes.includes(result.activities.name.toLowerCase()))
         console.log(results2)
         parkGallery.innerHTML = ""
         results2.forEach(createCard)
