@@ -35,7 +35,6 @@ img {
     border: solid black;
     text-align: center;
     overflow: hidden;
-
 }
 
 #parkImg {
@@ -78,4 +77,9 @@ img {
 
 #costRange {
     max-width: 70%;
+}
+
+/* heart style */
+.heartGlyph {
+    font-size: 28px;
 }
