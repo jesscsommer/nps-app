@@ -35,7 +35,6 @@ img {
     border: solid black;
     text-align: center;
     overflow: hidden;
-
 }
 
 #parkImg {
@@ -100,4 +99,10 @@ p#maxValue {
 
 div#allCheckboxes label {
     margin-right: 15px;
+}
+
+
+/* heart style */
+.heartGlyph {
+    font-size: 28px;
 }
