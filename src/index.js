@@ -76,9 +76,8 @@ function createCard(obj) {
             e.target.innerHTML = '&#x2764;&#xfe0f;'
         })
     }
-    // attach like button
+    // attach heart glyph
     card.append(likeContainer);
-    
 }
 
 // attach change event to userInput
