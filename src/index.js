@@ -8,11 +8,9 @@ const userInput = document.querySelector("#userInputField");
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 .then(res => res.json())
 .then(parks => {
-    // console.log(parks.data[0]);
     parks.data.forEach(park => {
         createCard(park);
     })
-    // createCards(parks.data);
 })
 
 //! functions
@@ -86,47 +84,11 @@ moreFilters.addEventListener('submit', e => {
         console.log(selectedValues)
     
         getParks().then(parks => {
-            // console.log(parks.data)
-            // const parksArray = parks.data
-            // console.log(parksArray[0])
             const results = parks.data.filter(park => selectedValues.includes(park.states))
             parkGallery.innerHTML = ""
             results.forEach(createCard)
         })
 })
-
-// submitBtn.addEventListener('submit', e => {
-//     //live server is preventing testing this effectively but if you run line by line in console, ['WA', 'OR'] is selectedValues
-//     e.preventDefault();
-
-//     const selectedItems = document.querySelectorAll('#states :checked')
-//     const selectedValues = [...selectedItems].map(item => item.value)
-//     console.log(selectedValues)
-
-//     getParks().then(parks => {
-//         console.log(parks.data.filter(park => park.stateCode === 'WA'))
-//     })
-
-    // getParks().then(parks => {
-    //    parks.data.filter(park => selectedValues.includes(park.stateCode))
-    //    .forEach(park => createCard(park)) // one of the parks in the selectedValues)
-    // })
-
-// })
-
-// testBtn.addEventListener('click', e => {
-//     const selectedItems = document.querySelectorAll('#states :checked')
-//     const selectedValues = [...selectedItems].map(item => item.value)
-//     console.log(selectedValues)
-
-//     // parkGallery.innerHTML = ""
-
-//     // getParks().then(parks => {
-//     //     console.log(parks.data.filter(park => (park.stateCode === 'WA')))
-//     //    parks.data.filter(park => selectedValues.includes(park.stateCode))
-//     //    .forEach(park => createCard(park)) // one of the parks in the selectedValues)
-//     })
-// })
 
 //! Fetch data
 
@@ -143,22 +105,4 @@ const getParks = (parkCode) => {
 getParks('olym').then(parkObj => displayPark(parkObj.data[0]))
 
 //! Filters
-
-// getParks().then(parks => console.log(parks.data))
-
-
-// parks.data is an array of parks objects
-// 'states' is the key on each obj with the states code 
-// you'll have to get the multiselect values somehow 
-// array .some() could perhaps help see if there is any overlap between the selected state codes (search queries) and the list of states for the parks
-
-// get selected options and save into target array
-// filter results array (parks.data) so that the state codes equal anything in the target array
-
-//! Initial fetch
-// fetch(`${baseURL}/parks?api_key=${API_KEY}`)
-// .then(res => res.json())
-// .then(parks => console.log(parks))
-
-// const card = document.createElement('div');
 
