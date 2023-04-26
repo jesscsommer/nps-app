@@ -5,9 +5,9 @@ const searchContainer = document.querySelector("#searchContainer");
 
 const userInput = document.querySelector("#userInput");
 
-const redHeart = '&#x2764;&#xfe0f;'
+const redHeart = '❤️';
 
-const emptyHeart = '&#x2661;'
+const emptyHeart = '♡';
 
 //! Initial fetch
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
@@ -54,16 +54,40 @@ function createCard(obj) {
     // add fee and location to card
     // card.append(location, entranceFee);
     likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
-    for (let glyph of glyphsArr) {
-        glyph.addEventListener('click', e => {
-            // console.log(e.target);
+    // for (let glyph of glyphsArr) {
+    //     glyph.addEventListener('click', e => {
+    //         // console.log(e.target);
+    //         e.target.innerHTML = `${redHeart}`;
+    //         let favListP = document.createElement('p');
+    //         favListP.className = 'favListP';
+    //         favListP.textContent = `${obj.fullName}`;
+    //         favList.append(favListP);
+    //     })
+    // }
+    likeContainer.addEventListener('click', e => {
+        let favListP = document.createElement('p');
+        console.log(emptyHeart);
+        console.log(e.target);
+        console.log(e.target.innerHTML);
+        console.log(e.target.innerHTML === emptyHeart);
+        // if heart is 
+        if (e.target.innerHTML.includes(`${emptyHeart}`)) {
+            favListP.id = obj.fullName.replaceAll(" ", "")
             e.target.innerHTML = `${redHeart}`;
-        })
-    }
-    let favListP = document.createElement('p');
-    favListP.className = 'favListP';
-    favListP.textContent = `${obj.fullName}`;
-    favList.append(favListP);
+            favListP.className = 'favListP';
+            favListP.textContent = `${obj.fullName}`;
+            favList.append(favListP);
+        } else if (e.target.innerHTML.includes(`${redHeart}`)) {
+            debugger;
+            e.target.innerHTML = `${emptyHeart}`;
+            document.querySelector(`#${obj.fullName.replaceAll(" ", "")}`).remove();
+            // remove from favList
+            
+        }
+        
+
+    })
+
 
     // for (let glyph of glyphsArr) {
     //     glyph.addEventListener('click', toggle);
