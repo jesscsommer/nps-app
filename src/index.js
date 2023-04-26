@@ -5,6 +5,10 @@ const searchContainer = document.querySelector("#searchContainer");
 
 const userInput = document.querySelector("#userInput");
 
+const redHeart = '&#x2764;&#xfe0f;'
+
+const emptyHeart = '&#x2661;'
+
 //! Initial fetch
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 .then(res => res.json())
@@ -26,7 +30,7 @@ function createCard(obj) {
     const entranceFee = document.createElement('p');
     const likeContainer = document.createElement('p');
     const glyphsArr = document.getElementsByClassName('heartGlyph');
-
+    
     card.className = "card";
     image.src = obj.images[0].url;
     image.alt = obj.fullName;
@@ -44,11 +48,11 @@ function createCard(obj) {
     ${obj.entranceFees[0].cost}`;
     // add fee and location to card
     // card.append(location, entranceFee);
-    likeContainer.innerHTML = `<span class="heartGlyph">&#x2661;</span>`;
+    likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
     for (let glyph of glyphsArr) {
         glyph.addEventListener('click', e => {
             // console.log(e.target);
-            e.target.innerHTML = '&#x2764;&#xfe0f;'
+            e.target.innerHTML = `${redHeart}`
         })
     }
     card.append(likeContainer);
