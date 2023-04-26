@@ -19,6 +19,8 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 })
 
 //! functions
+
+
 // card create function
 function createCard(obj) {
     const card = document.createElement('div');
@@ -30,18 +32,21 @@ function createCard(obj) {
     const entranceFee = document.createElement('p');
     const likeContainer = document.createElement('p');
     const glyphsArr = document.getElementsByClassName('heartGlyph');
+    const favList = document.getElementById('favList');
+    const cardParkName = document.querySelector('.parkName');
+    // card.append(parkName);
     
+    parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
+    parkName.innerText = obj.fullName
+    parkName.className = "parkName";
     card.className = "card";
     image.src = obj.images[0].url;
     image.alt = obj.fullName;
-    parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
-    parkName.innerText = obj.fullName
     state.innerText = obj.states
     fee.innerText = obj.entranceFees[0].cost
     image.src = obj.images[0].url;
     card.append(image, parkName, state, fee);
     parkGallery.append(card);
-    card.append(parkName);
     location.innerText = `Location: 
     ${obj.addresses[0].line1}, ${obj.addresses[0].city}, ${obj.addresses[0].stateCode}, ${obj.addresses[0].postalCode}`;
     entranceFee.innerText = `Entrance fee: 
@@ -52,9 +57,23 @@ function createCard(obj) {
     for (let glyph of glyphsArr) {
         glyph.addEventListener('click', e => {
             // console.log(e.target);
-            e.target.innerHTML = `${redHeart}`
+            e.target.innerHTML = `${redHeart}`;
         })
     }
+    let favListP = document.createElement('p');
+    favListP.className = 'favListP';
+    favListP.textContent = `${obj.fullName}`;
+    favList.append(favListP);
+
+    // for (let glyph of glyphsArr) {
+    //     glyph.addEventListener('click', toggle);
+    // }
+    // function toggle() {
+    //     const like = likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
+    //     if (like===) {
+
+    //     }
+    // }
     card.append(likeContainer);
 }
 
