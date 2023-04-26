@@ -11,34 +11,7 @@ const emptyHeart = '♡';
 
 const mainDisplay = document.querySelector("#mainPark");
 
-
-//! fetch calls
-fetch(`${baseURL}/parks?api_key=${API_KEY}`)
-.then(res => res.json())
-.then(parks => {
-    parks.data.forEach(park => {
-        createCard(park);
-    })
-})
-
-//! functions
-// filter user input function
-// attach change event to userInput
-userInput.addEventListener("change", (e) => {
-    console.log(e.target);
-    const userPark = e.target.value;
-    parkGallery.innerHTML = '';
-    getParks()
-    .then(parks => {
-        const results = parks.data.filter(park =>
-            park.fullName.includes(userPark));
-            results.forEach(result => createCard(result));
-        })
-    })
-
-    // const matchArr = obj.filter(park => park.fullName === userPark)
-    // // place the matching park on the main display
-    // console.log(matchArr);
+//! Render on page 
 
 const createCard = (obj) => {
 
@@ -67,7 +40,7 @@ const createCard = (obj) => {
 
     }
 
-//! Render on page 
+
 const renderLineItem = (lineItem, destinationList) => {
     const li = document.createElement('li')
     li.innerText = lineItem
@@ -75,6 +48,7 @@ const renderLineItem = (lineItem, destinationList) => {
 }
 
 const displayPark = (parkObj) => {
+    mainPark.classList.remove('hidden')
     parkImg.src = parkObj.images[0].url 
     parkImg.alt = parkObj.fullName
     parkTitle.innerText = parkObj.fullName
@@ -90,6 +64,18 @@ const displayPark = (parkObj) => {
 showFilters.addEventListener('click', e => {
     document.querySelector('#filters-container').classList.toggle('hidden');
 })
+
+userInput.addEventListener("change", (e) => {
+    console.log(e.target);
+    const userPark = e.target.value;
+    parkGallery.innerHTML = '';
+    getParks()
+    .then(parks => {
+        const results = parks.data.filter(park =>
+            park.fullName.includes(userPark));
+            results.forEach(result => createCard(result));
+        })
+    })
 
 moreFilters.addEventListener('submit', e => {
     e.preventDefault();
@@ -149,5 +135,12 @@ const getParks = (parkCode) => {
     }
 }
 
-//! Filters
+fetch(`${baseURL}/parks?api_key=${API_KEY}`)
+.then(res => res.json())
+.then(parks => {
+    parks.data.forEach(park => {
+        createCard(park);
+    })
+})
+
 
