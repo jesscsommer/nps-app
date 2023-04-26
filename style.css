@@ -164,7 +164,6 @@ div#allCheckboxes label {
     font-size: 20px;
 }
 
-
 .card > p {
     padding: 5px;
     margin: 5px;
@@ -175,10 +174,22 @@ div#allCheckboxes label {
 .favListP {
     background-color: #f1f1f1;
     padding: 5px;
-    margin: 5px;
+    margin: 10px;
     border-radius: 10px;
     text-align: center;
-    font-size: 14px;
+    font-size: 15px;
+    border: solid;
+    border-color:coral;
+    border-width: 3px;
+}
+
+#userInputField {
+    height: 20px;
+    font-size: 16pt;
+}
+
+#title {
+    font-size: 50pt;
 }
 
 #favList {

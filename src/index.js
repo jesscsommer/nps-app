@@ -3,13 +3,16 @@ const baseURL = 'https://developer.nps.gov/api/v1'
 
 const searchContainer = document.querySelector("#searchContainer");
 
-const userInput = document.querySelector("#userInput");
+const userInput = document.querySelector("input#userInputField");
 
 const redHeart = '❤️';
 
 const emptyHeart = '♡';
 
-//! Initial fetch
+const mainDisplay = document.querySelector("#mainPark");
+
+
+//! fetch calls
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 .then(res => res.json())
 .then(parks => {
@@ -19,7 +22,23 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 })
 
 //! functions
+// filter user input function
+// attach change event to userInput
+userInput.addEventListener("change", (e) => {
+    console.log(e.target);
+    const userPark = e.target.value;
+    parkGallery.innerHTML = '';
+    getParks()
+    .then(parks => {
+        const results = parks.data.filter(park =>
+            park.fullName.includes(userPark));
+            results.forEach(result => createCard(result));
+        })
+    })
 
+    // const matchArr = obj.filter(park => park.fullName === userPark)
+    // // place the matching park on the main display
+    // console.log(matchArr);
 
 const createCard = (obj) => {
 
@@ -48,9 +67,7 @@ const createCard = (obj) => {
 
     }
 
-
 //! Render on page 
-
 const renderLineItem = (lineItem, destinationList) => {
     const li = document.createElement('li')
     li.innerText = lineItem
@@ -58,17 +75,11 @@ const renderLineItem = (lineItem, destinationList) => {
 }
 
 const displayPark = (parkObj) => {
-    mainPark.classList.remove('hidden')
     parkImg.src = parkObj.images[0].url 
     parkImg.alt = parkObj.fullName
     parkTitle.innerText = parkObj.fullName
     parkDescription.innerText = parkObj.description
-
-    activityList.innerHTML = ""
     parkObj.activities.forEach(activity => renderLineItem(activity.name, activityList))
-
-    feeList.innerHTML = ""
-    parkObj.entranceFees.forEach(fee => renderLineItem(`${fee.title}: $${fee.cost}`, feeList))
     parkHours.innerText = parkObj.operatingHours[0].description
     parkAddress.innerText = `${parkObj.addresses[0].line1} \n ${parkObj.addresses[0].line2} \n ${parkObj.addresses[0].city}, ${parkObj.addresses[0].stateCode} ${parkObj.addresses[0].postalCode}`
 }
@@ -76,8 +87,6 @@ const displayPark = (parkObj) => {
 
 
 //! Add event listeners
-
-
 showFilters.addEventListener('click', e => {
     document.querySelector('#filters-container').classList.toggle('hidden');
 })
@@ -86,8 +95,6 @@ moreFilters.addEventListener('submit', e => {
     e.preventDefault();
     const selectedItems = document.querySelectorAll('#states :checked')
     const selectedValues = [...selectedItems].map(item => item.value)
-
-    const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox]')).filter(box => box.checked === true)
     const checkedValues = []
     checkedBoxes.forEach(box => checkedValues.push(box.id))
 
@@ -98,6 +105,7 @@ moreFilters.addEventListener('submit', e => {
     } else {
         getParks().then(parks => {
         parkGallery.innerHTML = ""
+
         const results = parks.data.filter(park => selectedValues.includes(park.states))
         for (let result of results) {
             for (let activities of result.activities) {
