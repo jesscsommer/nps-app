@@ -16,12 +16,12 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 .then(parks => {
     // console.log(parks.data);
     parks.data.forEach(park => {
-        console.log(userInput);
         createCard(park);
         filterByUserInput(park);
     })
 })
-
+// console.log(userInput);
+// console.log(userInput.value);
 //! functions
 // filter user input function
 // attach change event to userInput
@@ -31,13 +31,7 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 // })
 
 function filterByUserInput(obj) {
-    // const value = userInput.value;
-    // console.log(userInput);
-    // console.log(userInput.value);
-    // console.log(value);
-    // userInput.target.value.addEventListener('change', e => {
-
-    // })
+    
 }
 
 // card create function
