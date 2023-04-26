@@ -47,6 +47,7 @@ const createCard = (obj) => {
     }
 
     card.append(image, parkName, location, likeContainer);
+    card.addEventListener('click', e => displayPark(obj))
     parkGallery.append(card)
 }
 
