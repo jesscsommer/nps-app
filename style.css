@@ -26,6 +26,10 @@ li {
     font-family: 'Helvetica';
 }
 
+label {
+    font-family: 'Helvetica';
+}
+
 #showFilters {
     display: inline-block;
     padding: 10px;
@@ -36,12 +40,29 @@ li {
     width: 50%;
 }
 
+select {
+    font-size: 16px;
+}
+
 input[type=text]{
     padding: 10px;
     font-family: 'Helvetica';
     border-radius: 10px;
     border-width: 1px;
     width: 65%;
+}
+
+input[type=submit]{
+    padding: 10px;
+    font-family: 'Helvetica';
+    font-size: 16px;
+    border-radius: 10px;
+    border-width: 1px;
+    margin-top: 15px;
+    width: 15%;
+    outline: none;
+    border: none;
+    background-color: #11AB68;
 }
 
 
@@ -65,6 +86,10 @@ input[type=text]:focus {
     width: 100%;
     justify-self: center;
     height: 12rem;
+}
+
+.card:hover {
+    box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
 }
   
 #mainPark {
