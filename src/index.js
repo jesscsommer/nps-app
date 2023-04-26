@@ -46,9 +46,6 @@ function createCard(obj) {
     fee.innerText = obj.entranceFees[0].cost
     image.src = obj.images[0].url;
     card.append(image, parkName, state, fee);
-    card.addEventListener('click', e => {
-        displayPark(obj)
-    })
     parkGallery.append(card);
     location.innerText = `Location: 
     ${obj.addresses[0].line1}, ${obj.addresses[0].city}, ${obj.addresses[0].stateCode}, ${obj.addresses[0].postalCode}`;
@@ -57,18 +54,10 @@ function createCard(obj) {
     // add fee and location to card
     // card.append(location, entranceFee);
     likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
-    // for (let glyph of glyphsArr) {
-    //     glyph.addEventListener('click', e => {
-    //         // console.log(e.target);
-    //         e.target.innerHTML = `${redHeart}`;
-    //         let favListP = document.createElement('p');
-    //         favListP.className = 'favListP';
-    //         favListP.textContent = `${obj.fullName}`;
-    //         favList.append(favListP);
-    //     })
-    // }
+
     likeContainer.addEventListener('click', e => {
         let favListP = document.createElement('p');
+        favListP.className = "favListP";
         console.log(emptyHeart);
         console.log(e.target);
         console.log(e.target.innerHTML);
@@ -90,7 +79,6 @@ function createCard(obj) {
         
 
     })
-
 
     // for (let glyph of glyphsArr) {
     //     glyph.addEventListener('click', toggle);
@@ -123,17 +111,11 @@ const renderLineItem = (lineItem, destinationList) => {
 }
 
 const displayPark = (parkObj) => {
-    mainPark.classList.remove('hidden')
     parkImg.src = parkObj.images[0].url 
     parkImg.alt = parkObj.fullName
     parkTitle.innerText = parkObj.fullName
     parkDescription.innerText = parkObj.description
-
-    activityList.innerHTML = ""
     parkObj.activities.forEach(activity => renderLineItem(activity.name, activityList))
-
-    feeList.innerHTML = ""
-    parkObj.entranceFees.forEach(fee => renderLineItem(`${fee.title}: $${fee.cost}`, feeList))
     parkHours.innerText = parkObj.operatingHours[0].description
     parkAddress.innerText = `${parkObj.addresses[0].line1} \n ${parkObj.addresses[0].line2} \n ${parkObj.addresses[0].city}, ${parkObj.addresses[0].stateCode} ${parkObj.addresses[0].postalCode}`
 }
@@ -149,22 +131,11 @@ moreFilters.addEventListener('submit', e => {
     e.preventDefault();
     const selectedItems = document.querySelectorAll('#states :checked')
     const selectedValues = [...selectedItems].map(item => item.value)
-
-    const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox]')).filter(box => box.checked === true)
     const checkedValues = []
     checkedBoxes.forEach(box => checkedValues.push(box.id))
 
     getParks().then(parks => {
         parkGallery.innerHTML = ""
-        const results = parks.data.filter(park => selectedValues.includes(park.states))
-        for (let result of results) {
-            for (let activities of result.activities) {
-                if (checkedValues.includes(activities.name.toLowerCase())){
-                    console.log(activities.name)
-                    createCard(result)
-                }
-            }
-        }
     })
 })
 

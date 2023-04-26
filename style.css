@@ -113,9 +113,12 @@ div#allCheckboxes label {
     /* float: right; */
     /* display: inline; */
     /* position: fixed; */
-    background-color: #cd6ef5;
-    max-width: 10%;
+    background-color: #d2abe2;
+    max-width: 20%;
     transition: 0.5s;
+    border-radius: 20px;
+    padding: 2.5px;
+    margin: 20px;
 }
 
 p {
@@ -131,11 +134,14 @@ p {
     display: inline;
 }
 
-favListP {
+.favListP {
     background-color: #f1f1f1;
     padding: 5px;
-    margin: 5px;
+    margin: 10px;
     border-radius: 10px;
     text-align: center;
-    font-size: 2px;
+    font-size: 15px;
+    border: solid;
+    border-color:coral;
+    border-width: 3px;
 }
