@@ -4,6 +4,7 @@ header {
 
 h1 {
     font-family: 'Helvetica';
+    font-size: 350%;
     font-weight: 900;
 }
 
@@ -23,6 +24,24 @@ p {
 
 li {
     font-family: 'Helvetica';
+}
+
+#showFilters {
+    display: inline-block;
+    padding: 10px;
+}
+
+#search-container {
+    margin: auto;
+    width: 50%;
+}
+
+input[type=text]{
+    padding: 10px;
+    font-family: 'Helvetica';
+    border-radius: 10px;
+    border-width: 1px;
+    width: 65%;
 }
 
 /* #parkGallery {
@@ -63,7 +82,7 @@ img {
 
 #filters-container {
     padding: 15px;
-    outline: solid 5px #11AB68;
+    /* outline: solid 5px #11AB68; */
     overflow: hidden;
 }
 

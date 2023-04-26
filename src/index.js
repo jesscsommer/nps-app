@@ -99,7 +99,7 @@ const displayPark = (parkObj) => {
 
 
 showFilters.addEventListener('click', e => {
-    moreFilters.classList.toggle('hidden');
+    document.querySelector('#filters-container').classList.toggle('hidden');
 })
 
 moreFilters.addEventListener('submit', e => {
