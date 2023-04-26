@@ -45,6 +45,9 @@ function createCard(obj) {
     image.src = obj.images[0].url;
     // attach image to card
     card.append(image, parkName, state, fee);
+    card.addEventListener('click', e => {
+        displayPark(obj)
+    })
     parkGallery.append(card);
 
     // attach Park name to card
@@ -121,8 +124,10 @@ showFilters.addEventListener('click', e => {
 
 moreFilters.addEventListener('submit', e => {
     e.preventDefault();
+    const selectedItems = document.querySelectorAll('#states :checked')
+    const selectedValues = [...selectedItems].map(item => item.value)
 
-    const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox')).filter(box => box.checked === true)
+    const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox]')).filter(box => box.checked === true)
     const checkedValues = []
     checkedBoxes.forEach(box => checkedValues.push(box.id))
 
