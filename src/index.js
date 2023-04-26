@@ -121,7 +121,7 @@ showFilters.addEventListener('click', e => {
 
 moreFilters.addEventListener('submit', e => {
     e.preventDefault();
-  
+
     const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox')).filter(box => box.checked === true)
     const checkedValues = []
     checkedBoxes.forEach(box => checkedValues.push(box.id))
@@ -139,11 +139,6 @@ moreFilters.addEventListener('submit', e => {
         }
     })
 })
-
-costRange.addEventListener('change', e => {
-    maxValue.innerText = `$${e.target.value}`;
-})
-
 
 //! Fetch data
 
