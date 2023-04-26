@@ -1,11 +1,26 @@
+header {
+    text-align: center;
+    margin-left: 200px
+}
+
+h1 {
+    font-family: 'Helvetica';
+    font-size: 350%;
+    font-weight: 900;
+    color: #446622;
+}
+
 h2 {
     font-family: 'Helvetica';
-    color: #11AB68;
+    color: #446622;
     font-weight: 750;
 }
 
 h3 {
     font-family: 'Helvetica';
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
 }
 
 p {
@@ -16,44 +31,106 @@ li {
     font-family: 'Helvetica';
 }
 
-/* #parkGallery {
-    display: grid;
-} */
-
-img {
-    justify-self: center;
-    width: auto;
-    height: 12rem;
+label {
+    font-family: 'Helvetica';
 }
+
+#showFilters {
+    display: inline-block;
+    padding: 10px;
+}
+
+#search-container {
+    margin: auto;
+    width: 50%;
+}
+
+select {
+    font-size: 16px;
+}
+
+input[type=text]{
+    padding: 10px;
+    font-family: 'Helvetica';
+    border-radius: 10px;
+    border-width: 1px;
+    width: 65%;
+}
+
+input[type=submit]{
+    padding: 10px;
+    font-family: 'Helvetica';
+    font-size: 16px;
+    color: #fff;
+    border-radius: 10px;
+    border-width: 1px;
+    margin-top: 15px;
+    width: 15%;
+    outline: none;
+    border: none;
+    background-color: #446622;
+    text-align: center;
+}
+
+
+input[type=text]:focus {
+    outline-color: #446622;
+}
+
 
 .card {
+    width: 30%;
+    height: 350px;
+    border-radius: 5px;
     display: inline-grid;
-    width: 15rem;
-    height: 25rem;
-    padding: 1rem;
-    border: solid black;
-    text-align: center;
-    overflow: hidden;
+    margin: 10px;
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+.card > img {
+    border-radius: 5px 5px 0 0;
+    width: 100%;
+    justify-self: center;
+    height: 150px;
 }
 
-#parkImg {
-   float: left;
-   width: 33%;
-   margin: 3em;
+.card:hover {
+    box-shadow: 0 6px 20px 0 rgba(0,0,0,0.2);
 }
-
+  
 #mainPark {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 2px 16px;
     border-radius: 1.75%;
-    width: 100%; 
     height: 25%;
-    overflow: hidden;
+    width: 90%;
+    margin: auto;
+}
+
+div#main div#mainPark h3 {
+    text-align: left;
+}
+
+div#main div#mainPark p {
+    text-align: left;
+}
+
+div#main div#mainPark li {
+    text-align: left;
+}
+
+#mainPark > img {
+    float: left;
+    width: 40%;
+    border-radius: 5px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-right: 15px;
 }
 
 #filters-container {
     padding: 15px;
-    outline: solid 5px #11AB68;
     overflow: hidden;
 }
 
@@ -72,65 +149,26 @@ img {
     float: left;
     width: 25%;
     margin-top: 15px;
+    text-align: left;
 }
-
-/* #costRange {
-    max-width: 70%;
-} */
 
 ul {
     columns: 4;
-}
-
-p#minValue {
-   margin-right: 5px;
-}
-
-p#maxValue {
-    margin-left: 5px;
-}
-
-#slider {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 }
 
 div#allCheckboxes label {
     margin-right: 15px;
 }
 
-
-/* heart style */
 .heartGlyph {
-    font-size: 28px;
+    font-size: 20px;
 }
 
-#favList {
-    left: 0;
-    height: 100%;
-    /* float: right; */
-    /* display: inline; */
-    /* position: fixed; */
-    background-color: #d2abe2;
-    max-width: 20%;
-    transition: 0.5s;
-    border-radius: 20px;
-    padding: 2.5px;
-    margin: 20px;
-}
-
-p {
-    background-color: #f1f1f1;
+.card > p {
     padding: 5px;
     margin: 5px;
     border-radius: 10px;
     text-align: center;
-}
-
-#parkGallery {
-    margin-left: 300px;
-    display: inline;
 }
 
 .favListP {
@@ -152,4 +190,23 @@ p {
 
 #title {
     font-size: 50pt;
+}
+
+#favList {
+  width: 200px;
+  height: 100%; 
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #446622;
+  padding: 5px;
+}
+
+#main {
+    margin-left: 215px;
+    text-align: center;
+}
+
+#favTitle {
+    color: #fff;
 }

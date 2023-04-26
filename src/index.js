@@ -40,53 +40,32 @@ userInput.addEventListener("change", (e) => {
     // // place the matching park on the main display
     // console.log(matchArr);
 
-// card create function
-function createCard(obj) {
-    const card = document.createElement('div');
-    const image = document.createElement('img');
-    const parkName = document.createElement('p');
-    const state = document.createElement('p');
-    const fee = document.createElement('p');
-    const location = document.createElement('p');
-    const entranceFee = document.createElement('p');
-    const likeContainer = document.createElement('p');
-    const favList = document.getElementById('favList');
+const createCard = (obj) => {
 
-    parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
-    parkName.innerText = obj.fullName
-    parkName.className = "parkName";
+    const card = document.createElement('div');
     card.className = "card";
+
+    const image = document.createElement('img');
     image.src = obj.images[0].url;
     image.alt = obj.fullName;
-    state.innerText = obj.states
-    card.append(image, parkName);
+
+    const parkName = document.createElement('h3');
+    parkName.innerText = obj.fullName
+ 
+    const location = document.createElement('p');
+    location.innerText = `${obj.addresses[0].city}, ${obj.addresses[0].stateCode}`
+
+    const likeContainer = document.createElement('p');
+    likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
+    likeContainer.addEventListener('click', e => {handleLike(e, obj)})
+   
+    card.append(image, parkName, location, likeContainer);
+    card.addEventListener('click', e => {
+        displayPark(obj)
+    })
     parkGallery.append(card);
 
-    // add fee and location to card
-    // card.append(location, entranceFee);
-    likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
-
-    likeContainer.addEventListener('click', e => {
-        let favListP = document.createElement('p');
-        favListP.className = "favListP";
-        console.log(emptyHeart);
-        console.log(e.target);
-        console.log(e.target.innerHTML);
-        console.log(e.target.innerHTML === emptyHeart);
-        // if heart is 
-        if (e.target.innerHTML.includes(`${emptyHeart}`)) {
-            favListP.id = obj.fullName.replaceAll(" ", "")
-            e.target.innerHTML = `${redHeart}`;
-            favListP.className = 'favListP';
-            favListP.textContent = `${obj.fullName}`;
-            favList.append(favListP);
-        } else if (e.target.innerHTML.includes(`${redHeart}`)) {
-            e.target.innerHTML = `${emptyHeart}`;
-            document.querySelector(`#${obj.fullName.replaceAll(" ", "")}`).remove();
-        }
-    })
-    card.append(likeContainer);
-}
+    }
 
 //! Render on page 
 const renderLineItem = (lineItem, destinationList) => {
@@ -105,9 +84,11 @@ const displayPark = (parkObj) => {
     parkAddress.innerText = `${parkObj.addresses[0].line1} \n ${parkObj.addresses[0].line2} \n ${parkObj.addresses[0].city}, ${parkObj.addresses[0].stateCode} ${parkObj.addresses[0].postalCode}`
 }
 
+
+
 //! Add event listeners
 showFilters.addEventListener('click', e => {
-    moreFilters.classList.toggle('hidden');
+    document.querySelector('#filters-container').classList.toggle('hidden');
 })
 
 moreFilters.addEventListener('submit', e => {
@@ -117,10 +98,44 @@ moreFilters.addEventListener('submit', e => {
     const checkedValues = []
     checkedBoxes.forEach(box => checkedValues.push(box.id))
 
-    getParks().then(parks => {
+    if (selectedValues.length === 0) {
+        alert(`Please select a state`)
+    } else if (checkedValues.length === 0) {
+        alert(`Please select activities`)
+    } else {
+        getParks().then(parks => {
         parkGallery.innerHTML = ""
-    })
+
+        const results = parks.data.filter(park => selectedValues.includes(park.states))
+        for (let result of results) {
+            for (let activities of result.activities) {
+                if (checkedValues.includes(activities.name.toLowerCase())){
+                    console.log(activities.name)
+                    createCard(result)
+                }
+            }
+         }
+        })
+    }
+
+    document.querySelector('#filters-container').classList.toggle('hidden')
 })
+
+const handleLike = (e, obj) => {
+    let favListP = document.createElement('p');
+    favListP.addEventListener('click', e => displayPark(obj))
+    if (e.target.innerHTML.includes(`${emptyHeart}`)) {
+        favListP.id = obj.fullName.replaceAll(" ", "")
+        e.target.innerHTML = `${redHeart}`;
+        favListP.className = 'favListP';
+        favListP.textContent = `${obj.fullName}`;
+        favList.append(favListP);
+    } else if (e.target.innerHTML.includes(`${redHeart}`)) {
+        e.target.innerHTML = `${emptyHeart}`;
+        document.querySelector(`#${obj.fullName.replaceAll(" ", "")}`).remove();
+        
+    }
+}
 
 //! Fetch data
 
