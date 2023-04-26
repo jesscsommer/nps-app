@@ -150,3 +150,7 @@ p {
     height: 20px;
     font-size: 16pt;
 }
+
+#title {
+    font-size: 50pt;
+}
