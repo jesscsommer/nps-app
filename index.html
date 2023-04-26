@@ -29,12 +29,6 @@
                 <option value="WA">WA</option>
                 <option value="OR">OR</option>
             </select>
-            <label class="formLabel" for="costRange">Entrance fees:</label>
-            <div id="slider" class="formData">
-                <p id="minValue">$0</p>
-                <input type="range" min="0" max="100" value="50" id="costRange">
-                <p id="maxValue">$50</p>
-            </div>
             
             <label for="allCheckboxes" class="formLabel">Available activities:</label>
             <div id="allCheckboxes" class="formData">
@@ -66,13 +60,15 @@
         </form>
     </div>
 
-    <div id="mainPark">
+    <div id="mainPark" class="hidden">
         <img id="parkImg">
         <h2 id="parkTitle">Park title</h2>
         <p id="parkDescription">Park description</p>
         <h3>Location</h3>
         <p id="parkAddress">Address</p>
         <p id="parkHours">Hours</p>
+        <h3>Entrance Fees</h3>
+        <ul id="feeList"></ul>
         <h3>Activities</h3>
         <ul id="activityList"></ul>
        
