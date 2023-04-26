@@ -9,30 +9,36 @@ const redHeart = '❤️';
 
 const emptyHeart = '♡';
 
+const mainDisplay = document.querySelector("#mainPark");
+
 
 //! fetch calls
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 .then(res => res.json())
 .then(parks => {
-    // console.log(parks.data);
     parks.data.forEach(park => {
         createCard(park);
-        filterByUserInput(park);
     })
 })
-// console.log(userInput);
-// console.log(userInput.value);
+
 //! functions
 // filter user input function
 // attach change event to userInput
-// userInput.addEventListener("change", (e) => {
-//     e.preventDefault();
-//     // e.target.value.textContent
-// })
+userInput.addEventListener("change", (e) => {
+    console.log(e.target);
+    const userPark = e.target.value;
+    parkGallery.innerHTML = '';
+    getParks()
+    .then(parks => {
+        const results = parks.data.filter(park =>
+            park.fullName.includes(userPark));
+            results.forEach(result => createCard(result));
+        })
+    })
 
-function filterByUserInput(obj) {
-    
-}
+    // const matchArr = obj.filter(park => park.fullName === userPark)
+    // // place the matching park on the main display
+    // console.log(matchArr);
 
 // card create function
 function createCard(obj) {
@@ -53,13 +59,9 @@ function createCard(obj) {
     image.src = obj.images[0].url;
     image.alt = obj.fullName;
     state.innerText = obj.states
-    fee.innerText = obj.entranceFees[0].cost
-    card.append(image, parkName, state, fee);
+    card.append(image, parkName);
     parkGallery.append(card);
-    location.innerText = `Location: 
-    ${obj.addresses[0].line1}, ${obj.addresses[0].city}, ${obj.addresses[0].stateCode}, ${obj.addresses[0].postalCode}`;
-    entranceFee.innerText = `Entrance fee: 
-    ${obj.entranceFees[0].cost}`;
+
     // add fee and location to card
     // card.append(location, entranceFee);
     likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
@@ -104,8 +106,6 @@ const displayPark = (parkObj) => {
 }
 
 //! Add event listeners
-
-
 showFilters.addEventListener('click', e => {
     moreFilters.classList.toggle('hidden');
 })
