@@ -16,6 +16,9 @@ h2 {
 
 h3 {
     font-family: 'Helvetica';
+    font-size: 18px;
+    text-align: center;
+    padding: 10px;
 }
 
 p {
@@ -85,7 +88,7 @@ input[type=text]:focus {
     border-radius: 5px 5px 0 0;
     width: 100%;
     justify-self: center;
-    height: 12rem;
+    height: 150px;
 }
 
 .card:hover {
@@ -146,7 +149,7 @@ div#allCheckboxes label {
 
 /* heart style */
 .heartGlyph {
-    font-size: 28px;
+    font-size: 20px;
 }
 
 #favList {
