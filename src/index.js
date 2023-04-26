@@ -9,17 +9,29 @@ const redHeart = '❤️';
 
 const emptyHeart = '♡';
 
-//! Initial fetch
+//! fetch calls
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 .then(res => res.json())
 .then(parks => {
+    console.log(parks.data);
     parks.data.forEach(park => {
         createCard(park);
     })
 })
 
-//! functions
+fetch(`${baseURL}/parks?api_key=${API_KEY}`)
+.then(res => res.json())
+.then(parks => {
+    parks.data.forEach(park => {
+        filterByUserInput(park);
+    })
+})
 
+//! functions
+// filter user input function
+function filterByUserInput(obj) {
+    
+}
 
 // card create function
 function createCard(obj) {
@@ -70,14 +82,9 @@ function createCard(obj) {
             favListP.textContent = `${obj.fullName}`;
             favList.append(favListP);
         } else if (e.target.innerHTML.includes(`${redHeart}`)) {
-            debugger;
             e.target.innerHTML = `${emptyHeart}`;
             document.querySelector(`#${obj.fullName.replaceAll(" ", "")}`).remove();
-            // remove from favList
-            
         }
-        
-
     })
 
     // for (let glyph of glyphsArr) {
