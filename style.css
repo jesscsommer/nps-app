@@ -145,3 +145,8 @@ p {
     border-color:coral;
     border-width: 3px;
 }
+
+#userInputField {
+    height: 20px;
+    font-size: 16pt;
+}

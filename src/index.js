@@ -3,34 +3,41 @@ const baseURL = 'https://developer.nps.gov/api/v1'
 
 const searchContainer = document.querySelector("#searchContainer");
 
-const userInput = document.querySelector("#userInput");
+const userInput = document.querySelector("input#userInputField");
 
 const redHeart = '❤️';
 
 const emptyHeart = '♡';
 
+
 //! fetch calls
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 .then(res => res.json())
 .then(parks => {
-    console.log(parks.data);
+    // console.log(parks.data);
     parks.data.forEach(park => {
+        console.log(userInput);
         createCard(park);
-    })
-})
-
-fetch(`${baseURL}/parks?api_key=${API_KEY}`)
-.then(res => res.json())
-.then(parks => {
-    parks.data.forEach(park => {
         filterByUserInput(park);
     })
 })
 
 //! functions
 // filter user input function
+// attach change event to userInput
+// userInput.addEventListener("change", (e) => {
+//     e.preventDefault();
+//     // e.target.value.textContent
+// })
+
 function filterByUserInput(obj) {
-    
+    // const value = userInput.value;
+    // console.log(userInput);
+    // console.log(userInput.value);
+    // console.log(value);
+    // userInput.target.value.addEventListener('change', e => {
+
+    // })
 }
 
 // card create function
@@ -43,11 +50,8 @@ function createCard(obj) {
     const location = document.createElement('p');
     const entranceFee = document.createElement('p');
     const likeContainer = document.createElement('p');
-    const glyphsArr = document.getElementsByClassName('heartGlyph');
     const favList = document.getElementById('favList');
-    const cardParkName = document.querySelector('.parkName');
-    // card.append(parkName);
-    
+
     parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
     parkName.innerText = obj.fullName
     parkName.className = "parkName";
@@ -56,7 +60,6 @@ function createCard(obj) {
     image.alt = obj.fullName;
     state.innerText = obj.states
     fee.innerText = obj.entranceFees[0].cost
-    image.src = obj.images[0].url;
     card.append(image, parkName, state, fee);
     parkGallery.append(card);
     location.innerText = `Location: 
@@ -86,31 +89,10 @@ function createCard(obj) {
             document.querySelector(`#${obj.fullName.replaceAll(" ", "")}`).remove();
         }
     })
-
-    // for (let glyph of glyphsArr) {
-    //     glyph.addEventListener('click', toggle);
-    // }
-    // function toggle() {
-    //     const like = likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
-    //     if (like===) {
-
-    //     }
-    // }
     card.append(likeContainer);
 }
 
-// attach change event to userInput
-// userInput.addEventListener("change", (e) => {
-//     e.preventDefault();
-//     // e.target.value.textContent
-// })
-
-
-
-
-
 //! Render on page 
-
 const renderLineItem = (lineItem, destinationList) => {
     const li = document.createElement('li')
     li.innerText = lineItem
