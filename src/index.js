@@ -61,9 +61,6 @@ function createCard(obj) {
     // add fee and location to card
     // card.append(location, entranceFee);
     
-    // add a count variable for each card's like button
-    let count = 0;
-
     // create and add a <p> to hold like glyph
     const likeContainer = document.createElement('p');
     likeContainer.innerHTML = `<span class="heartGlyph">&#x2661;</span>`;
