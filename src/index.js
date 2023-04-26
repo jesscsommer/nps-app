@@ -21,89 +21,32 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 //! functions
 
 
-// card create function
-
 const createCard = (obj) => {
 
     const card = document.createElement('div');
-    const image = document.createElement('img');
-    const parkName = document.createElement('h3');
-    const location = document.createElement('p');
-    const likeContainer = document.createElement('p');
-    const glyphsArr = document.getElementsByClassName('heartGlyph');
-
-    const favList = document.getElementById('favList');
-    const cardParkName = document.querySelector('.parkName');
-    // card.append(parkName);
-    
-    parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
-    parkName.innerText = obj.fullName
-    parkName.className = "parkName";
     card.className = "card";
 
+    const image = document.createElement('img');
     image.src = obj.images[0].url;
     image.alt = obj.fullName;
-    state.innerText = obj.states
-    fee.innerText = obj.entranceFees[0].cost
-    image.src = obj.images[0].url;
-    card.append(image, parkName, state, fee);
+
+    const parkName = document.createElement('h3');
+    parkName.innerText = obj.fullName
+ 
+    const location = document.createElement('p');
+    location.innerText = `${obj.addresses[0].city}, ${obj.addresses[0].stateCode}`
+
+    const likeContainer = document.createElement('p');
+    likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
+    likeContainer.addEventListener('click', e => {handleLike(e, obj)})
+   
+    card.append(image, parkName, location, likeContainer);
     card.addEventListener('click', e => {
         displayPark(obj)
     })
     parkGallery.append(card);
-    location.innerText = `Location: 
-    ${obj.addresses[0].line1}, ${obj.addresses[0].city}, ${obj.addresses[0].stateCode}, ${obj.addresses[0].postalCode}`;
-    entranceFee.innerText = `Entrance fee: 
-    ${obj.entranceFees[0].cost}`;
-    // add fee and location to card
-    // card.append(location, entranceFee);
-    likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
-    // for (let glyph of glyphsArr) {
-    //     glyph.addEventListener('click', e => {
-    //         // console.log(e.target);
-    //         e.target.innerHTML = `${redHeart}`;
-    //         let favListP = document.createElement('p');
-    //         favListP.className = 'favListP';
-    //         favListP.textContent = `${obj.fullName}`;
-    //         favList.append(favListP);
-    //     })
-    // }
-    likeContainer.addEventListener('click', e => {
-        let favListP = document.createElement('p');
-        console.log(emptyHeart);
-        console.log(e.target);
-        console.log(e.target.innerHTML);
-        console.log(e.target.innerHTML === emptyHeart);
-        // if heart is 
-        if (e.target.innerHTML.includes(`${emptyHeart}`)) {
-            favListP.id = obj.fullName.replaceAll(" ", "")
-            e.target.innerHTML = `${redHeart}`;
-            favListP.className = 'favListP';
-            favListP.textContent = `${obj.fullName}`;
-            favList.append(favListP);
-        } else if (e.target.innerHTML.includes(`${redHeart}`)) {
-            debugger;
-            e.target.innerHTML = `${emptyHeart}`;
-            document.querySelector(`#${obj.fullName.replaceAll(" ", "")}`).remove();
-            // remove from favList
-            
-        }
-        
 
-    })
-
-
-    // for (let glyph of glyphsArr) {
-    //     glyph.addEventListener('click', toggle);
-    // }
-    // function toggle() {
-    //     const like = likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
-    //     if (like===) {
-
-    //     }
-    // }
-    card.append(likeContainer);
-}
+    }
 
 
 //! Render on page 
@@ -129,6 +72,8 @@ const displayPark = (parkObj) => {
     parkHours.innerText = parkObj.operatingHours[0].description
     parkAddress.innerText = `${parkObj.addresses[0].line1} \n ${parkObj.addresses[0].line2} \n ${parkObj.addresses[0].city}, ${parkObj.addresses[0].stateCode} ${parkObj.addresses[0].postalCode}`
 }
+
+
 
 //! Add event listeners
 
@@ -168,6 +113,21 @@ moreFilters.addEventListener('submit', e => {
 
     document.querySelector('#filters-container').classList.toggle('hidden')
 })
+
+const handleLike = (e, obj) => {
+    let favListP = document.createElement('p');
+    if (e.target.innerHTML.includes(`${emptyHeart}`)) {
+        favListP.id = obj.fullName.replaceAll(" ", "")
+        e.target.innerHTML = `${redHeart}`;
+        favListP.className = 'favListP';
+        favListP.textContent = `${obj.fullName}`;
+        favList.append(favListP);
+    } else if (e.target.innerHTML.includes(`${redHeart}`)) {
+        e.target.innerHTML = `${emptyHeart}`;
+        document.querySelector(`#${obj.fullName.replaceAll(" ", "")}`).remove();
+        
+    }
+}
 
 //! Fetch data
 
