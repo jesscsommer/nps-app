@@ -110,8 +110,14 @@ moreFilters.addEventListener('submit', e => {
     const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox]')).filter(box => box.checked === true)
     const checkedValues = []
     checkedBoxes.forEach(box => checkedValues.push(box.id))
+    console.log(checkedValues)
 
-    getParks().then(parks => {
+    if (selectedValues.length === 0) {
+        alert(`Please select a state`)
+    } else if (checkedValues.length === 0) {
+        alert(`Please select activities`)
+    } else {
+        getParks().then(parks => {
         parkGallery.innerHTML = ""
         const results = parks.data.filter(park => selectedValues.includes(park.states))
         for (let result of results) {
@@ -121,8 +127,11 @@ moreFilters.addEventListener('submit', e => {
                     createCard(result)
                 }
             }
-        }
-    })
+         }
+        })
+    }
+
+    document.querySelector('#filters-container').classList.toggle('hidden')
 })
 
 //! Fetch data
