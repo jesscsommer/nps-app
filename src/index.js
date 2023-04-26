@@ -90,7 +90,6 @@ moreFilters.addEventListener('submit', e => {
     const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox]')).filter(box => box.checked === true)
     const checkedValues = []
     checkedBoxes.forEach(box => checkedValues.push(box.id))
-    console.log(checkedValues)
 
     if (selectedValues.length === 0) {
         alert(`Please select a state`)
