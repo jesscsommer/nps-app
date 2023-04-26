@@ -20,50 +20,35 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 
 //! functions
 // card create function
-function createCard(obj) {
+
+const createCard = (obj) => {
+
     const card = document.createElement('div');
     const image = document.createElement('img');
-    const parkName = document.createElement('p');
-    const state = document.createElement('p');
+    const parkName = document.createElement('h3');
     const location = document.createElement('p');
     const likeContainer = document.createElement('p');
     const glyphsArr = document.getElementsByClassName('heartGlyph');
-    
+
     card.className = "card";
+
     image.src = obj.images[0].url;
     image.alt = obj.fullName;
-    parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
-    parkName.innerText = obj.fullName
-    state.innerText = obj.states
-    image.src = obj.images[0].url;
-    card.append(image, parkName, state);
-    card.addEventListener('click', e => {
-        displayPark(obj)
-    })
-    parkGallery.append(card);
-    card.append(parkName);
-    location.innerText = `Location: 
-    ${obj.addresses[0].line1}, ${obj.addresses[0].city}, ${obj.addresses[0].stateCode}, ${obj.addresses[0].postalCode}`;
-    // add fee and location to card
-    // card.append(location, entranceFee);
+
+    parkName.innerText = obj.fullName;
+
+    location.innerText = `${obj.addresses[0].city}, ${obj.addresses[0].stateCode}`;
+
     likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
     for (let glyph of glyphsArr) {
         glyph.addEventListener('click', e => {
-            // console.log(e.target);
             e.target.innerHTML = `${redHeart}`
         })
     }
-    card.append(likeContainer);
+
+    card.append(image, parkName, location, likeContainer);
+    parkGallery.append(card)
 }
-
-// attach change event to userInput
-// userInput.addEventListener("change", (e) => {
-//     e.preventDefault();
-//     // e.target.value.textContent
-// })
-
-
-
 
 
 //! Render on page 
