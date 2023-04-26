@@ -44,10 +44,10 @@ input[type=text]{
     width: 65%;
 }
 
-/* #parkGallery {
-    display: grid;
 
-} */
+input[type=text]:focus {
+    outline-color: #11AB68;
+}
 
 img {
     justify-self: center;
@@ -56,21 +56,20 @@ img {
 }
 
 .card {
+    width: 30%;
+    height: 350px;
+    border-radius: 5px;
     display: inline-grid;
-    width: 15rem;
-    height: 25rem;
-    padding: 1rem;
-    border: solid black;
-    text-align: center;
-    overflow: hidden;
+    margin: 10px;
+    overflow: auto;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+img {
+    border-radius: 5px 5px 0 0;
+    width: 100%
 }
-
-#parkImg {
-   float: left;
-   width: 33%;
-   margin: 3em;
-}
-
+  
 #mainPark {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 2px 16px;
@@ -103,26 +102,8 @@ img {
     margin-top: 15px;
 }
 
-/* #costRange {
-    max-width: 70%;
-} */
-
 ul {
     columns: 4;
-}
-
-p#minValue {
-   margin-right: 5px;
-}
-
-p#maxValue {
-    margin-left: 5px;
-}
-
-#slider {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
 }
 
 div#allCheckboxes label {
@@ -145,8 +126,7 @@ div#allCheckboxes label {
     background-color: #cd6ef5;
 }
 
-p {
-    background-color: #f1f1f1;
+.card > p {
     padding: 5px;
     margin: 5px;
     border-radius: 10px;

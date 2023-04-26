@@ -25,9 +25,7 @@ function createCard(obj) {
     const image = document.createElement('img');
     const parkName = document.createElement('p');
     const state = document.createElement('p');
-    const fee = document.createElement('p');
     const location = document.createElement('p');
-    const entranceFee = document.createElement('p');
     const likeContainer = document.createElement('p');
     const glyphsArr = document.getElementsByClassName('heartGlyph');
     
@@ -37,9 +35,8 @@ function createCard(obj) {
     parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
     parkName.innerText = obj.fullName
     state.innerText = obj.states
-    fee.innerText = obj.entranceFees[0].cost
     image.src = obj.images[0].url;
-    card.append(image, parkName, state, fee);
+    card.append(image, parkName, state);
     card.addEventListener('click', e => {
         displayPark(obj)
     })
@@ -47,8 +44,6 @@ function createCard(obj) {
     card.append(parkName);
     location.innerText = `Location: 
     ${obj.addresses[0].line1}, ${obj.addresses[0].city}, ${obj.addresses[0].stateCode}, ${obj.addresses[0].postalCode}`;
-    entranceFee.innerText = `Entrance fee: 
-    ${obj.entranceFees[0].cost}`;
     // add fee and location to card
     // card.append(location, entranceFee);
     likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
