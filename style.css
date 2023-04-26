@@ -154,12 +154,13 @@ div#allCheckboxes label {
 
 #favList {
     left: 0;
-    width: 250px;
     height: 100%;
     /* float: right; */
     /* display: inline; */
     /* position: fixed; */
     background-color: #cd6ef5;
+    max-width: 10%;
+    transition: 0.5s;
 }
 
 .card > p {
@@ -171,4 +172,14 @@ div#allCheckboxes label {
 
 #parkGallery {
     margin-left: 300px;
+    display: inline;
+}
+
+favListP {
+    background-color: #f1f1f1;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 2px;
 }

@@ -5,9 +5,9 @@ const searchContainer = document.querySelector("#searchContainer");
 
 const userInput = document.querySelector("#userInput");
 
-const redHeart = '&#x2764;&#xfe0f;'
+const redHeart = '❤️';
 
-const emptyHeart = '&#x2661;'
+const emptyHeart = '♡';
 
 //! Initial fetch
 fetch(`${baseURL}/parks?api_key=${API_KEY}`)
@@ -19,6 +19,8 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
 })
 
 //! functions
+
+
 // card create function
 
 const createCard = (obj) => {
@@ -30,25 +32,77 @@ const createCard = (obj) => {
     const likeContainer = document.createElement('p');
     const glyphsArr = document.getElementsByClassName('heartGlyph');
 
+    const favList = document.getElementById('favList');
+    const cardParkName = document.querySelector('.parkName');
+    // card.append(parkName);
+    
+    parkName.innerHTML = `<strong>${obj.fullName}</strong>`;
+    parkName.innerText = obj.fullName
+    parkName.className = "parkName";
     card.className = "card";
 
     image.src = obj.images[0].url;
     image.alt = obj.fullName;
-
-    parkName.innerText = obj.fullName;
-
-    location.innerText = `${obj.addresses[0].city}, ${obj.addresses[0].stateCode}`;
-
+    state.innerText = obj.states
+    fee.innerText = obj.entranceFees[0].cost
+    image.src = obj.images[0].url;
+    card.append(image, parkName, state, fee);
+    card.addEventListener('click', e => {
+        displayPark(obj)
+    })
+    parkGallery.append(card);
+    location.innerText = `Location: 
+    ${obj.addresses[0].line1}, ${obj.addresses[0].city}, ${obj.addresses[0].stateCode}, ${obj.addresses[0].postalCode}`;
+    entranceFee.innerText = `Entrance fee: 
+    ${obj.entranceFees[0].cost}`;
+    // add fee and location to card
+    // card.append(location, entranceFee);
     likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
-    for (let glyph of glyphsArr) {
-        glyph.addEventListener('click', e => {
-            e.target.innerHTML = `${redHeart}`
-        })
-    }
+    // for (let glyph of glyphsArr) {
+    //     glyph.addEventListener('click', e => {
+    //         // console.log(e.target);
+    //         e.target.innerHTML = `${redHeart}`;
+    //         let favListP = document.createElement('p');
+    //         favListP.className = 'favListP';
+    //         favListP.textContent = `${obj.fullName}`;
+    //         favList.append(favListP);
+    //     })
+    // }
+    likeContainer.addEventListener('click', e => {
+        let favListP = document.createElement('p');
+        console.log(emptyHeart);
+        console.log(e.target);
+        console.log(e.target.innerHTML);
+        console.log(e.target.innerHTML === emptyHeart);
+        // if heart is 
+        if (e.target.innerHTML.includes(`${emptyHeart}`)) {
+            favListP.id = obj.fullName.replaceAll(" ", "")
+            e.target.innerHTML = `${redHeart}`;
+            favListP.className = 'favListP';
+            favListP.textContent = `${obj.fullName}`;
+            favList.append(favListP);
+        } else if (e.target.innerHTML.includes(`${redHeart}`)) {
+            debugger;
+            e.target.innerHTML = `${emptyHeart}`;
+            document.querySelector(`#${obj.fullName.replaceAll(" ", "")}`).remove();
+            // remove from favList
+            
+        }
+        
 
-    card.append(image, parkName, location, likeContainer);
-    card.addEventListener('click', e => displayPark(obj))
-    parkGallery.append(card)
+    })
+
+
+    // for (let glyph of glyphsArr) {
+    //     glyph.addEventListener('click', toggle);
+    // }
+    // function toggle() {
+    //     const like = likeContainer.innerHTML = `<span class="heartGlyph">${emptyHeart}</span>`;
+    //     if (like===) {
+
+    //     }
+    // }
+    card.append(likeContainer);
 }
 
 
