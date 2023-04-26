@@ -115,6 +115,7 @@ moreFilters.addEventListener('submit', e => {
 
 const handleLike = (e, obj) => {
     let favListP = document.createElement('p');
+    favListP.addEventListener('click', e => displayPark(obj))
     if (e.target.innerHTML.includes(`${emptyHeart}`)) {
         favListP.id = obj.fullName.replaceAll(" ", "")
         e.target.innerHTML = `${redHeart}`;
