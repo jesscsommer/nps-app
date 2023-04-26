@@ -121,10 +121,7 @@ showFilters.addEventListener('click', e => {
 
 moreFilters.addEventListener('submit', e => {
     e.preventDefault();
-    const selectedItems = document.querySelectorAll('#states :checked')
-    const selectedValues = [...selectedItems].map(item => item.value)
-    const maxPrice = parseInt(costRange.value);
-
+  
     const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox')).filter(box => box.checked === true)
     const checkedValues = []
     checkedBoxes.forEach(box => checkedValues.push(box.id))
