@@ -1,11 +1,11 @@
-**# Title**
+# **Title**
 
-**## Description**
+## **Description**
 
-**## Installation**
+## **Installation**
 
-**## Usage**
+## **How to Use the Program**
 
-**## Contributing**
+## **Contributing**
 
-**## License**
+## **License**
