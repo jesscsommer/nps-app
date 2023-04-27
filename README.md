@@ -22,7 +22,9 @@ Fork and clone this repository. Navigate to the directory on your local device. 
 Not open to contributions at this time :)
 
 ## **Authors and acknowledgement**
-Made with little time, but much effort by [jesscsommer](https://github.com/jesscsommer) and [Blujay0](https://github.com/Blujay0).
+Contributors:
+* [jesscsommer](https://github.com/jesscsommer)
+* [Blujay0](https://github.com/Blujay0)
 
 ## **License**
 NPS Data API is open and accessible to all developers who wish to use NPS data in their projects.
