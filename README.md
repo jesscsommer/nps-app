@@ -1,6 +1,6 @@
 # **Wander**
 
-## Wander is a single page JavaScript application that enables you to search national parks throughout the United States. You can filter parks by name, state, and available activities. Additionally, you can add parks to your favorites for your next trip.
+Wander is a single page JavaScript application that enables you to search national parks throughout the United States. You can filter parks by name, state, and available activities. Additionally, you can add parks to your favorites for your next trip.
 
 ## **Installation**
 
@@ -23,6 +23,6 @@ Made with little time, but much effort by [jesscsommer](https://github.com/jessc
 ## **License**
 NPS Data API is open and accessible to all developers who wish to use NPS data in their projects.
 
-[NPS] (https://www.nps.gov/subjects/digital/nps-data-api.htm)
+[NPS](https://www.nps.gov/subjects/digital/nps-data-api.htm)
 
 [MIT](https://choosealicense.com/licenses/mit/)
