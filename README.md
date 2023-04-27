@@ -12,7 +12,7 @@
 ![Screenshot (324)](https://user-images.githubusercontent.com/102722125/234735132-0d9ec64c-8c18-4733-b3bb-d8c67f9a2042.png)
 
 3. Keep track of the national parks that you like by using the like button feature that will add your choices to a list on the left-hand side of the page or remove them.
-![Screenshot (325)](https://user-images.githubusercontent.com/102722125/234734687-aea13308-0b78-4b0a-88d7-f14611942103.png)
+![Screenshot (325)](https://user-images.githubusercontent.com/102722125/234736748-87440010-144e-44cb-a690-ace10dd16239.png)
 
 ## **Contributing**
 Not open to contributions at this time :)
