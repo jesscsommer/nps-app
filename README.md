@@ -7,19 +7,26 @@ Fork and clone this repository. Navigate to the directory on your local device. 
 
 ## **How to Use the Program**
 1. Search for a National Park in the United States using a keyword or park name.
+<p>&nbsp;</p>
 
 ![Screenshot (326)](https://user-images.githubusercontent.com/102722125/234734874-d0ea33f7-64b9-4505-802b-b7d1d3383f4a.png)
 
+<p>&nbsp;</p>
 2. Use the "More filters" option to customize your results by state and available activites provided at the parks.
+<p>&nbsp;</p>
 
 ![Screenshot (324)](https://user-images.githubusercontent.com/102722125/234736880-44bc4767-3935-4d68-869a-7975862bc9aa.png)
 
+<p>&nbsp;</p>
 3. Keep track of the national parks that you like by using the like button feature that will add your choices to a "Favorites List" or remove them.
+<p>&nbsp;</p>
 
 ![Screenshot (325)](https://user-images.githubusercontent.com/102722125/234736748-87440010-144e-44cb-a690-ace10dd16239.png)
 
+<p>&nbsp;</p>
+
 ## **Contributing**
-Not open to contributions at this time :)
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## **Authors and acknowledgement**
 Contributors:
