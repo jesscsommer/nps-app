@@ -97,7 +97,6 @@ moreFilters.addEventListener('submit', e => {
         for (let result of results) {
             for (let activities of result.activities) {
                 if (checkedValues.includes(activities.name.toLowerCase())){
-                    console.log(activities.name)
                     createCard(result)
                 }
             }
