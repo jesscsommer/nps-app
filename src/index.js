@@ -54,6 +54,7 @@ const displayPark = (parkObj) => {
     parkTitle.innerText = parkObj.fullName
     parkDescription.innerText = parkObj.description
     parkObj.activities.forEach(activity => renderLineItem(activity.name, activityList))
+    parkObj.entranceFees.forEach(fee => renderLineItem(`${fee.title}: $${fee.cost}`, feeList))
     parkHours.innerText = parkObj.operatingHours[0].description
     parkAddress.innerText = `${parkObj.addresses[0].line1} \n ${parkObj.addresses[0].line2} \n ${parkObj.addresses[0].city}, ${parkObj.addresses[0].stateCode} ${parkObj.addresses[0].postalCode}`
 }
