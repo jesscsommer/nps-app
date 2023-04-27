@@ -11,7 +11,7 @@
 2. Use the 'More filters' option to customize your results by state and available activites provided at the parks.
 ![Screenshot (324)](https://user-images.githubusercontent.com/102722125/234736880-44bc4767-3935-4d68-869a-7975862bc9aa.png)
 
-3. Keep track of the national parks that you like by using the like button feature that will add your choices to a list on the left-hand side of the page or remove them.
+3. Keep track of the national parks that you like by using the like button feature that will add your choices to a "Favorites List" or remove them.
 ![Screenshot (325)](https://user-images.githubusercontent.com/102722125/234736748-87440010-144e-44cb-a690-ace10dd16239.png)
 
 ## **Contributing**
