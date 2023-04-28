@@ -1,15 +1,10 @@
 //! Globals
 const baseURL = 'https://developer.nps.gov/api/v1'
 
-const searchContainer = document.querySelector("#searchContainer");
-
-const userInput = document.querySelector("input#userInputField");
-
 const redHeart = '❤️';
 
 const emptyHeart = '♡';
 
-const mainDisplay = document.querySelector("#mainPark");
 
 //! Render on page 
 
@@ -66,15 +61,14 @@ showFilters.addEventListener('click', e => {
     document.querySelector('#filters-container').classList.toggle('hidden');
 })
 
-userInput.addEventListener("change", (e) => {
-    console.log(e.target);
-    const userPark = e.target.value;
+userInputField.addEventListener("change", (e) => {
+    const userPark = e.target.value.toLowerCase();
     parkGallery.innerHTML = '';
     getParks()
     .then(parks => {
         const results = parks.data.filter(park =>
-            park.fullName.includes(userPark));
-            results.forEach(result => createCard(result));
+            park.fullName.toLowerCase().includes(userPark));
+        results.forEach(result => createCard(result));
         })
     })
 
@@ -97,7 +91,6 @@ moreFilters.addEventListener('submit', e => {
         for (let result of results) {
             for (let activities of result.activities) {
                 if (checkedValues.includes(activities.name.toLowerCase())){
-                    console.log(activities.name)
                     createCard(result)
                 }
             }
