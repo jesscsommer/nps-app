@@ -1,15 +1,10 @@
 //! Globals
 const baseURL = 'https://developer.nps.gov/api/v1'
 
-const searchContainer = document.querySelector("#searchContainer");
-
-const userInput = document.querySelector("input#userInputField");
-
 const redHeart = '❤️';
 
 const emptyHeart = '♡';
 
-const mainDisplay = document.querySelector("#mainPark");
 
 //! Render on page 
 
@@ -66,8 +61,8 @@ showFilters.addEventListener('click', e => {
     document.querySelector('#filters-container').classList.toggle('hidden');
 })
 
-userInput.addEventListener("change", (e) => {
-    console.log(e.target);
+userInputField.addEventListener("change", (e) => {
+    debugger;
     const userPark = e.target.value;
     parkGallery.innerHTML = '';
     getParks()
@@ -82,6 +77,8 @@ moreFilters.addEventListener('submit', e => {
     e.preventDefault();
     const selectedItems = document.querySelectorAll('#states :checked')
     const selectedValues = [...selectedItems].map(item => item.value)
+
+    const checkedBoxes = Array.from(document.querySelectorAll('input[type=checkbox]')).filter(box => box.checked === true)
     const checkedValues = []
     checkedBoxes.forEach(box => checkedValues.push(box.id))
 
