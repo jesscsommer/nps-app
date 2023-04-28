@@ -62,14 +62,13 @@ showFilters.addEventListener('click', e => {
 })
 
 userInputField.addEventListener("change", (e) => {
-    debugger;
-    const userPark = e.target.value;
+    const userPark = e.target.value.toLowerCase();
     parkGallery.innerHTML = '';
     getParks()
     .then(parks => {
         const results = parks.data.filter(park =>
-            park.fullName.includes(userPark));
-            results.forEach(result => createCard(result));
+            park.fullName.toLowerCase().includes(userPark));
+        results.forEach(result => createCard(result));
         })
     })
 
