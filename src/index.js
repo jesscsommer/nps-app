@@ -98,6 +98,7 @@ moreFilters.addEventListener('submit', e => {
             }
          }
         })
+        .catch(error => console.log(error))
     }
 
     document.querySelector('#filters-container').classList.toggle('hidden')
@@ -125,9 +126,11 @@ const getParks = (parkCode) => {
     if (parkCode) {
         return fetch(`${baseURL}/parks?parkCode=${parkCode}&api_key=${API_KEY}`)
         .then(res => res.json())
+        .catch(error => console.log(error))
     } else {
         return fetch(`${baseURL}/parks?limit=475&api_key=${API_KEY}`)
         .then(res => res.json())
+        .catch(error => console.log(error))
     }
 }
 
@@ -138,5 +141,6 @@ fetch(`${baseURL}/parks?api_key=${API_KEY}`)
         createCard(park);
     })
 })
+.catch(error => console.log(error))
 
 
